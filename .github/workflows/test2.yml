@@ -1,4 +1,4 @@
-name: Run AMD64 Rootfs on ARM64 using Box64
+name: Compile Box64 and Run AMD64 Rootfs on ARM64
 
 on:
   push:
@@ -6,23 +6,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-amd64-environment:
+  build-and-run:
     runs-on: ubuntu-24.04-arm  # Native GitHub ARM64 Runner
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Host Prerequisites
+      - name: Install Host Tools & Build Dependencies
         run: |
           sudo apt update
-          sudo apt install -y proot wget
+          sudo apt install -y proot wget git cmake build-essential
 
-      - name: Install Box64 on Host
+      - name: Clone and Compile Box64 Normally
         run: |
-          sudo add-apt-repository ppa:ryanorte/box64 -y
-          sudo apt update
-          sudo apt install -y box64
+          git clone --depth 1 https://github.com/ptitSeb/box64.git
+          cd box64
+          mkdir build && cd build
+          # Configure using standard target compilation along with the ARM64 flag
+          cmake .. -DARM64=1 -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+          make -j$(nproc)
+          sudo make install
 
       - name: Download and Extract Ubuntu AMD64 Rootfs
         run: |
@@ -34,10 +38,10 @@ jobs:
 
       - name: Inject Box64 into Rootfs
         run: |
-          # Copy the ARM64 host binary into the rootfs so PRoot can reach it internally
+          # Copy the newly compiled host binary to a path the guest rootfs can locate
           cp $(which box64) $HOME/ubuntu_amd64/usr/bin/box64
 
-      - name: Run AMD64 Script via PRoot
+      - name: Run AMD64 Script via PRoot + Compiled Box64
         run: |
           proot \
             -r $HOME/ubuntu_amd64 \
@@ -47,15 +51,14 @@ jobs:
             -b /sys \
             -q /usr/bin/box64 \
             bash -c '
-              # Fix internal DNS inside the rootfs
+              # Fix internal DNS inside the container
               echo "nameserver 8.8.8.8" > /etc/resolv.conf
               
-              # Run test commands to prove it is running in emulation
               echo "=== Architecture Info Inside Container ==="
               dpkg --print-architecture
               uname -m
               
-              # Install an AMD64 app or dependency
+              # Run test apt commands inside the amd64 layer
               apt-get update && apt-get install -y curl
               curl --version
             '
