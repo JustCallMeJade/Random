@@ -1,0 +1,26 @@
+name: Xlib Zink
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+
+    container:
+      image: fedora:latest
+      options: --platform=linux/arm64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Xlib-zink.sh
+        run: |
+          chmod +x Zink-Xlib.sh
+          ./Zink-Xlib.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib64
+          path: workdir/install_dir/lib64/*
