@@ -1,4 +1,6 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 workdir="$(pwd)/workdir"
 install_dir="$workdir/install_dir"
