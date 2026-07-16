@@ -17,8 +17,9 @@ git clone --depth 1 https://gitlab.freedesktop.org/mesa/mesa.git
 cd mesa
 
 wget -O freedreno-experimental-patch.py https://raw.githubusercontent.com/JustCallMeJade/Extras/refs/heads/main/Extras/Py-Patches/freedreno-experimental.py
+wget https://raw.githubusercontent.com/JustCallMeJade/Extras/refs/heads/main/Extras/Py-Patches/Freedreno-gallium-kgsl.py
 
-python3 freedreno-experimental-patch.py
+python3 freedreno-experimental-patch.py && python3 Freedreno-gallium-kgsl.py
 
 meson setup build --prefix "$install_dir" -Dplatforms=x11 -Dglx=xlib -Dopengl=true -Dgles1=disabled -Degl=disabled -Dgles2=disabled -Dstrip=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl
 
