@@ -9,8 +9,8 @@ mkdir -p "$workdir" && mkdir -p "$install_dir"
 
 cd "$workdir"
 
-dnf update > /dev/null -y && dnf builddep mesa > /dev/null -y
-dnf install pkg-config wget cmake python3 git > /dev/null -y
+dnf update &> /dev/null -y && dnf builddep mesa &> /dev/null -y
+dnf install pkg-config wget cmake python3 git &> /dev/null -y
 
 git clone --depth 1 https://gitlab.freedesktop.org/mesa/mesa.git
 
