@@ -20,7 +20,7 @@ wget -O freedreno-experimental-patch.py https://raw.githubusercontent.com/JustCa
 
 python3 freedreno-experimental-patch.py
 
-meson setup build --prefix "$install_dir" -Dplatforms=x11 -Dglx=xlib -Dopengl=true -Dgles1=disabled -Degl=disabled -Dgles2=disabled -Dstrip=true -Dgallium-drivers=freedreno -Dvulkan-drivers=
+meson setup build --prefix "$install_dir" -Dplatforms=x11 -Dglx=xlib -Dopengl=true -Dgles1=disabled -Degl=disabled -Dgles2=disabled -Dstrip=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl
 
 ninja -C build -j$(nproc) install
 
