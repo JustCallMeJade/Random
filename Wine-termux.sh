@@ -17,3 +17,18 @@ patch -p1 -i "$patches"
 done
 
 cd ../../../../../..
+
+git clone --depth=1 --recursive https://gitlab.winehq.org/wine/wine.git
+
+cd wine
+
+for patches in 0001-fix-paths.patch 0002-no-pthread_mutexattr_setprotocol.patch 0003-fix-socket-ipx.patch; do
+wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-devel/"$patches"
+patch -p1 -i "$patches"
+done
+
+chmod +x configure
+./configure \
+--prefix="$OUTPUTDIR" \
+--with-opengl \
+--with-vulkan
