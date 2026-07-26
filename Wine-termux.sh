@@ -1,4 +1,5 @@
 #!/bin/bash -e
+set -e pipefail
 
 WORKDIR=$PWD/Workdir
 OUTPUTDIR=$WORKDIR/Builds
