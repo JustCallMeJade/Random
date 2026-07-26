@@ -18,6 +18,8 @@ done
 
 cd ../../../../../..
 
+export NDK=$WORKDIR/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin
+
 git clone --depth=1 --recursive https://gitlab.winehq.org/wine/wine.git
 
 cd wine
@@ -26,6 +28,11 @@ for patches in 0001-fix-paths.patch 0002-no-pthread_mutexattr_setprotocol.patch 
 wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-devel/"$patches"
 patch -p1 -i "$patches"
 done
+
+export CROSSCC="x86_64-w64-mingw32-gcc"
+export CROSSCXX="x86_64-w64-mingw32-g++"
+export C=$NDK/x86_64-linux-android28-clang
+export CXX=$NDK/x86_64-linux-android28-clang++
 
 chmod +x configure
 ./configure \
