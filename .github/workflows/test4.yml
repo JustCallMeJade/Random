@@ -1,4 +1,4 @@
-name: Proton wcp
+name: Wine termux
 
 on:
   workflow_dispatch:
@@ -71,7 +71,8 @@ jobs:
             libgstreamer1.0-dev \
             libgstreamer-plugins-base1.0-dev \
             libmpg123-dev \
-            libopenal-dev
+            libopenal-dev \
+            wayland*
 
           sudo apt-get install -y gstreamer1.0-*
 
