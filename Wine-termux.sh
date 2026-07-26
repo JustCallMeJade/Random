@@ -74,3 +74,6 @@ chmod +x configure
 
 make -j$(nproc)
 make install
+
+cd $OUTPUTDIR
+tar -cJf wine.tar.xz bin lib share include
