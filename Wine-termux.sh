@@ -36,7 +36,7 @@ done
 
 export CROSSCC="arm64ec-w64-mingw32-gcc"
 export CROSSCXX="arm64ec-w64-mingw32-g++"
-export C=$NDK/aarch64-linux-android30-clang
+export CC=$NDK/aarch64-linux-android30-clang
 export CXX=$NDK/aarch64-linux-android30-clang++
 
 chmod +x configure
@@ -79,6 +79,7 @@ chmod +x configure
 --without-gettext \
 --with-krb5 \
 --with-sdl
+
 
 make -j$(nproc)
 make install
