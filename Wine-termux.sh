@@ -51,5 +51,13 @@ chmod +x configure
 --with-gstreamer \
 --with-pthread \
 --with-xcomposite \
-
+--enable-win64 \
+--enable-archs=x86_64,i386 \
+--with-xcursor \
+--with-xfixes \
+--with-mingw \
+--without-xinerama \
+--with-xinput \
+--with-xinput2 \
+--with-xrander
 
