@@ -35,8 +35,8 @@ done
 
 export CROSSCC="arm64ec-w64-mingw32-gcc"
 export CROSSCXX="arm64ec-w64-mingw32-g++"
-export C=$NDK/aarch64-linux-android28-clang
-export CXX=$NDK/aarch64-linux-android28-clang++
+export C=$NDK/aarch64-linux-android30-clang
+export CXX=$NDK/aarch64-linux-android30-clang++
 
 chmod +x configure
 ./configure \
@@ -63,7 +63,7 @@ chmod +x configure
 --with-pthread \
 --with-xcomposite \
 --enable-win64 \
---enable-archs=arm64ec,aarch64 \
+--enable-archs=arm64ec,aarch64,i386 \
 --with-xcursor \
 --with-xfixes \
 --with-mingw=clang \
