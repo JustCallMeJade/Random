@@ -8,7 +8,11 @@ mkdir -p $WORKDIR $OUTPUTDIR
 cd $WORKDIR
 
 wget -O ndk.zip https://dl.google.com/android/repository/android-ndk-r29-linux.zip &> /dev/null
-unzip ndk.zip
+unzip ndk.zip &> /dev/null
+wget -O mingw.tar.xz https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64.tar.xz &> /dev/null # The Standard MINGW package doesn't have arm64ec 
+unzip mingw.tar.xz &> /dev/null
+export PATH="$WORKDIR/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64/bin:$PATH"
+
 cd android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/sysroot &> /dev/null
 
 for patches in 1.patch 2.patch 3.patch 4.patch 5.patch 6.patch 7.patch 8.patch 9.patch 10.patch stdlib.h.patch sys-cdefs.h.patch sys-time.h.patch syslog.patch time.h.patch unistd.h.patch utmp.h.patch; do
@@ -29,10 +33,10 @@ wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/
 patch -p1 -i "$patches"
 done
 
-export CROSSCC="x86_64-w64-mingw32-gcc"
-export CROSSCXX="x86_64-w64-mingw32-g++"
-export C=$NDK/x86_64-linux-android28-clang
-export CXX=$NDK/x86_64-linux-android28-clang++
+export CROSSCC="arm64ec-w64-mingw32-gcc"
+export CROSSCXX="arm64ec-w64-mingw32-g++"
+export C=$NDK/aarch64-linux-android28-clang
+export CXX=$NDK/aarch64-linux-android28-clang++
 
 chmod +x configure
 ./configure \
@@ -59,10 +63,10 @@ chmod +x configure
 --with-pthread \
 --with-xcomposite \
 --enable-win64 \
---enable-archs=x86_64,i386 \
+--enable-archs=arm64ec,aarch64 \
 --with-xcursor \
 --with-xfixes \
---with-mingw \
+--with-mingw=clang \
 --without-xinerama \
 --with-xinput \
 --with-xinput2 \
