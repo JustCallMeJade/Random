@@ -34,8 +34,8 @@ wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/
 patch -p1 -i "$patches"
 done
 
-export CROSSCC="arm64ec-w64-mingw32-gcc"
-export CROSSCXX="arm64ec-w64-mingw32-g++"
+export CROSSCC="arm64ec-w64-mingw32-clang"
+export CROSSCXX="arm64ec-w64-mingw32-clang++"
 export CC=$NDK/aarch64-linux-android30-clang
 export CXX=$NDK/aarch64-linux-android30-clang++
 
