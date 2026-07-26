@@ -16,4 +16,4 @@ wget https://raw.githubusercontent.com/JustCallMeJade/termux-packages/refs/heads
 patch -p1 -i "$patches"
 done
 
-cd ../../../../..
+cd ../../../../../..
