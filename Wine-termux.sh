@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 WORKDIR=$PWD/Workdir
-OUPUTDIR=$WORKDIR/Builds
+OUTPUTDIR=$WORKDIR/Builds
 
 mkdir -p $WORKDIR $OUTPUTDIR
 
