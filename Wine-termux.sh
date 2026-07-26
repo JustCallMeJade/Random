@@ -52,7 +52,7 @@ chmod +x configure
 --without-opencl \
 --without-osmesa \
 --without-oss \
---with-wayland \
+--without-wayland \
 --with-x \
 --without-usb \
 --with-gstreamer \
