@@ -28,8 +28,8 @@ git clone --depth=1 --recursive https://gitlab.winehq.org/wine/wine.git
 
 cd wine
 
-for patches in 0001-fix-paths.patch 0002-no-pthread_mutexattr_setprotocol.patch 0003-fix-socket-ipx.patch; do
-wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-devel/"$patches"
+for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch; do
+wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-stable/"$patches"
 patch -p1 -i "$patches"
 done
 
@@ -74,7 +74,10 @@ chmod +x configure
 --with-xrender \
 --without-xshape \
 --without-xshm \
---without-xxf86vm
+--without-xxf86vm \
+--without-gettext \
+--with-krb5 \
+--with-sdl
 
 make -j$(nproc)
 make install
