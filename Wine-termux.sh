@@ -31,4 +31,15 @@ chmod +x configure
 ./configure \
 --prefix="$OUTPUTDIR" \
 --with-opengl \
---with-vulkan
+--with-vulkan \
+--enable-nls \
+--disable-tests \
+--without-alsa \
+--with-pulse \
+--without-capi \
+--without-coreaudio \
+--without-cups \
+--without-dbus \
+--with-fontconfig \
+--with-freetype \
+
