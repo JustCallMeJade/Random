@@ -42,4 +42,14 @@ chmod +x configure
 --without-dbus \
 --with-fontconfig \
 --with-freetype \
+--without-opencl \
+--without-osmesa \
+--without-oss \
+--with-wayland \
+--with-x \
+--without-usb \
+--with-gstreamer \
+--with-pthread \
+--with-xcomposite \
+
 
