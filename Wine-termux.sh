@@ -59,5 +59,11 @@ chmod +x configure
 --without-xinerama \
 --with-xinput \
 --with-xinput2 \
---with-xrander
+--with-xrander \
+--with-xrender \
+--without-xshape \
+--without-xshm \
+--without-xxf86vm
 
+make -j$(nproc)
+make install
