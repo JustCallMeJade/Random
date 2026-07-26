@@ -73,7 +73,7 @@ jobs:
             libopenal-dev \
             wayland*
 
-          sudo apt-get install -y gstreamer1.0-* wayland-* krb5* *krb5
+          sudo apt-get install -y gstreamer1.0-* wayland-* krb5* *krb5 libkrb5-dev 
 
       - name: Run build script
         run: |
