@@ -78,7 +78,9 @@ chmod +x configure
 --without-xxf86vm \
 --without-gettext \
 --with-krb5 \
---with-sdl
+--with-sdl \
+--enable-wineandroid_drv=no \
+--disable-amd_args_x64
 
 
 make -j$(nproc)
