@@ -74,7 +74,7 @@ export GSTREAMER_LIBS="-L$deps/lib -lgstgl-1.0 -lgstapp-1.0 -lgstvideo-1.0 -lgst
 export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$deps/include/libavformat"
 export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
-export PKG_CONFIG_SYSROOT_DIR="$deps"
+export PKG_CONFIG_SYSROOT_DIR="$deps/.."
 
 ./configure \
 --prefix="$PWD/../Builds" \
