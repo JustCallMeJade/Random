@@ -54,8 +54,8 @@ cd ..
 
 export CROSSCC="arm64ec-w64-mingw32-clang"
 export CROSSCXX="arm64ec-w64-mingw32-clang++"
-export CC="$NDK/clang"
-export CXX="$NDK/clang++"
+export CC="$NDK/aarch64-linux-android28-clang"
+export CXX="$NDK/aarch64-linux-android28-clang++"
 export AR="$NDK/llvm-ar"
 export RANLIB="$NDK/llvm-ranlib"
 export STRIP="$NDK/llvm-strip"
@@ -68,7 +68,6 @@ bash $WORKDIR/../android-sysvshem/build.sh
 
 export PKG_CONFIG_LIBDIR=$deps/lib/pkgconfig:$deps/share/pkgconfig
 export ACLOCAL_PATH=$deps/lib/aclocal:$deps/share/aclocal
-export CPPFLAGS="-I$deps/include --sysroot=$deps/.."
 export FREETYPE_CFLAGS="-I$deps/include/freetype2"
 export PULSE_CFLAGS="-I$deps/include/pulse"
 export PULSE_LIBS="-L$deps/lib/pulseaudio -lpulse"
@@ -81,9 +80,10 @@ export GSTREAMER_LIBS="-L$deps/lib -lgstgl-1.0 -lgstapp-1.0 -lgstvideo-1.0 -lgst
 export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$deps/include/libavformat"
 export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
-export PKG_CONFIG_SYSROOT_DIR="$deps/.."
-export CFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
-export CXXFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
+export CPPFLAGS="-I$deps/include --sysroot=$NDK/../sysroot"
+export CFLAGS="-Wno-declaration-after-statement"
+export CXXFLAGS="-Wno-declaration-after-statement"
+export LDFLAGS="-L$deps/lib"
 
 ./configure \
 --prefix="$PWD/../Builds" \
@@ -127,7 +127,6 @@ export CXXFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
 --host=aarch64-linux-android \
---build=x86_64-linux-gnu \
 --with-wine-tools=./wine-tools
 
 make -j$(nproc)
