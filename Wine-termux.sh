@@ -17,7 +17,7 @@ wget -O termuxfs.tar https://github.com/GameNative/termux-on-gha/releases/downlo
 tar -xf termuxfs.tar
 export PATH="$WORKDIR/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64/bin:$PATH"
 
-cd android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/sysroot &> /dev/null
+cd android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/sysroot
 
 for patches in 1.patch 2.patch 3.patch 4.patch 5.patch 6.patch 7.patch 8.patch 9.patch 10.patch stdlib.h.patch sys-cdefs.h.patch sys-time.h.patch syslog.patch time.h.patch unistd.h.patch utmp.h.patch; do
 wget https://raw.githubusercontent.com/JustCallMeJade/termux-packages/refs/heads/master/ndk-patches/29/"$patches"
@@ -76,7 +76,7 @@ export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool
 
 ./configure \
---prefix="$PWD/Workdir/Builds" \
+--prefix="$PWD/../Builds" \
 --with-opengl \
 --with-vulkan \
 --enable-nls \
