@@ -12,7 +12,8 @@ wget -O ndk.zip https://dl.google.com/android/repository/android-ndk-r29-linux.z
 unzip ndk.zip &> /dev/null
 wget -O mingw.tar.xz https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64.tar.xz &> /dev/null # The Standard MINGW package doesn't have arm64ec 
 tar -xf mingw.tar.xz &> /dev/null
-wget -O termux-fs.tar https://github.com/GameNative/termux-on-gha/releases/download/build-20260218/termuxfs-aarch64.tar
+wget -O termuxfs.tar https://github.com/GameNative/termux-on-gha/releases/download/build-20260218/termuxfs-aarch64.tar
+tar -xf termuxfs.tar
 export PATH="$WORKDIR/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64/bin:$PATH"
 
 cd android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/sysroot &> /dev/null
@@ -56,6 +57,22 @@ export AR="$NDK/llvm-ar"
 export RANLIB="$NDK/llvm-ranlib"
 export STRIP="$NDK/llvm-strip"
 export NM="$NDK/llvm-nm"
+export deps="$WORKDIR/data/data/com.termux/files/usr"
+export PKG_CONFIG_LIBDIR=$deps/lib/pkgconfig:$deps/share/pkgconfig
+export ACLOCAL_PATH=$deps/lib/aclocal:$deps/share/aclocal
+export CPPFLAGS="-I$deps/include --sysroot=$NDK/../sysroot"
+export FREETYPE_CFLAGS="-I$deps/include/freetype2"
+export PULSE_CFLAGS="-I$deps/include/pulse"
+export PULSE_LIBS="-L$deps/lib/pulseaudio -lpulse"
+export SDL2_CFLAGS="-I$deps/include/SDL2"
+export SDL2_LIBS="-L$deps/lib -lSDL2"
+export X_CFLAGS="-I$deps/include/X11"
+export X_LIBS="-landroid-sysvshm"
+export GSTREAMER_CFLAGS="-I$deps/include/gstreamer-1.0 -I$deps/include/glib-2.0 -I$deps/lib/glib-2.0/include -I$deps/glib-2.0/include -I$deps/lib/gstreamer-1.0/include"
+export GSTREAMER_LIBS="-L$deps/lib -lgstgl-1.0 -lgstapp-1.0 -lgstvideo-1.0 -lgstaudio-1.0 -lglib-2.0 -lgobject-2.0 -lgio-2.0 -lgsttag-1.0 -lgstbase-1.0 -lgstreamer-1.0"
+export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$deps/include/libavformat"
+export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
+export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool
 
 ./configure \
 --prefix="$OUTPUTDIR" \
