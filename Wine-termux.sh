@@ -75,7 +75,7 @@ export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$de
 export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
 export PKG_CONFIG_SYSROOT_DIR="$deps/.."
-
+export CFLAGS="--sysroot=$deps/.."
 ./configure \
 --prefix="$PWD/../Builds" \
 --with-opengl \
