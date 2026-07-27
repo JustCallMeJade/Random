@@ -29,9 +29,11 @@ git clone --depth=1 --recursive https://gitlab.winehq.org/wine/wine.git
 
 cd wine
 
+wget https://raw.githubusercontent.com/JustCallMeJade/Turnip_drivers_adreno/refs/heads/main/Extras/patch-fixer.py
+
 for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch; do
 wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-stable/"$patches"
-patch -p1 -i "$patches"
+python3 patch-fixer.py "$patches"
 done
 
 export CROSSCC="arm64ec-w64-mingw32-clang"
