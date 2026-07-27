@@ -122,7 +122,7 @@ export LDFLAGS="-L$deps/lib"
 --without-xshm \
 --without-xxf86vm \
 --without-gettext \
---with-krb5 \
+--without-krb5 \
 --with-sdl \
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
