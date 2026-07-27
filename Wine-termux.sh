@@ -42,6 +42,16 @@ export CC=$NDK/aarch64-linux-android30-clang
 export CXX=$NDK/aarch64-linux-android30-clang++
 
 chmod +x configure
+
+mkdir wine-tools
+
+cd wine-tools
+
+../configure --without-x --without-gstreamer --without-vulkan --without-wayland
+make -j$(nproc) __tooldeps__ nls/all
+
+cd ..
+
 ./configure \
 --prefix="$OUTPUTDIR" \
 --with-opengl \
@@ -84,8 +94,8 @@ chmod +x configure
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
 --host=aarch64-linux-android \
---build=x86_64-linux-gnu
-
+--build=x86_64-linux-gnu \
+--with-wine-tools=./wine-tools
 
 make -j$(nproc)
 make install
