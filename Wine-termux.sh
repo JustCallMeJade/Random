@@ -82,7 +82,9 @@ chmod +x configure
 --with-krb5 \
 --with-sdl \
 --enable-wineandroid_drv=no \
---disable-amd_args_x64
+--disable-amd_args_x64 \
+--host=aarch64-linux-android \
+--build=x86_64-linux-gnu
 
 
 make -j$(nproc)
