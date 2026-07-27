@@ -62,6 +62,11 @@ export RANLIB="$NDK/llvm-ranlib"
 export STRIP="$NDK/llvm-strip"
 export NM="$NDK/llvm-nm"
 export deps="$WORKDIR/data/data/com.termux/files/usr"
+
+wget https://raw.githubusercontent.com/JustCallMeJade/proton-wine/refs/heads/proton_10.0/android/android_sysvshm/build-aarch64.sh
+chmod +x build-aarch64.sh
+./build-aarch64.sh
+
 export PKG_CONFIG_LIBDIR=$deps/lib/pkgconfig:$deps/share/pkgconfig
 export ACLOCAL_PATH=$deps/lib/aclocal:$deps/share/aclocal
 export CPPFLAGS="-I$deps/include --sysroot=$deps/.."
