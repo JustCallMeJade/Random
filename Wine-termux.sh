@@ -55,8 +55,8 @@ cd ..
 
 export CROSSCC="arm64ec-w64-mingw32-clang"
 export CROSSCXX="arm64ec-w64-mingw32-clang++"
-export CC=$NDK/aarch64-linux-android28-clang
-export CXX=$NDK/aarch64-linux-android28-clang++
+export CC="$NDK/clang"
+export CXX="$NDK/clang++"
 export AR="$NDK/llvm-ar"
 export RANLIB="$NDK/llvm-ranlib"
 export STRIP="$NDK/llvm-strip"
@@ -83,8 +83,8 @@ export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$de
 export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
 export PKG_CONFIG_SYSROOT_DIR="$deps/.."
-export CFLAGS="--sysroot=$deps/.."
-export CXXFLAGS="--sysroot=$deps/.."
+export CFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
+export CXXFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
 
 ./configure \
 --prefix="$PWD/../Builds" \
