@@ -73,7 +73,7 @@ export GSTREAMER_CFLAGS="-I$deps/include/gstreamer-1.0 -I$deps/include/glib-2.0 
 export GSTREAMER_LIBS="-L$deps/lib -lgstgl-1.0 -lgstapp-1.0 -lgstvideo-1.0 -lgstaudio-1.0 -lglib-2.0 -lgobject-2.0 -lgio-2.0 -lgsttag-1.0 -lgstbase-1.0 -lgstreamer-1.0"
 export FFMPEG_CFLAGS="-I$deps/include/libavutil -I$deps/include/libavcodec -I$deps/include/libavformat"
 export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
-export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool
+export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
 
 ./configure \
 --prefix="$PWD/../Builds" \
