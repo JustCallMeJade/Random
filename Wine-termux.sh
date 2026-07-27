@@ -83,7 +83,7 @@ cd ..
 --without-xinerama \
 --with-xinput \
 --with-xinput2 \
---with-xrander \
+--with-xrandr \
 --with-xrender \
 --without-xshape \
 --without-xshm \
