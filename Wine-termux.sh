@@ -63,7 +63,9 @@ export STRIP="$NDK/llvm-strip"
 export NM="$NDK/llvm-nm"
 export deps="$WORKDIR/data/data/com.termux/files/usr"
 
-../../android-sysvshem/build.sh
+chmod +x $WORKDIR/../android-sysvshem/build.sh
+
+bash $WORKDIR/../android-sysvshem/build.sh
 
 export PKG_CONFIG_LIBDIR=$deps/lib/pkgconfig:$deps/share/pkgconfig
 export ACLOCAL_PATH=$deps/lib/aclocal:$deps/share/aclocal
