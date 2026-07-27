@@ -39,13 +39,13 @@ wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/
 python3 patch-fixer.py "$patches"
 done
 
-chmod +x configure
+chmod +x configure.sh
 
 mkdir wine-tools
 
 cd wine-tools
 
-../configure --without-x --without-gstreamer --without-vulkan --without-wayland
+../configure.sh --without-x --without-gstreamer --without-vulkan --without-wayland
 make -j$(nproc) __tooldeps__ nls/all
 
 cd ..
