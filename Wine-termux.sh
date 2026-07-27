@@ -64,7 +64,7 @@ export NM="$NDK/llvm-nm"
 export deps="$WORKDIR/data/data/com.termux/files/usr"
 export PKG_CONFIG_LIBDIR=$deps/lib/pkgconfig:$deps/share/pkgconfig
 export ACLOCAL_PATH=$deps/lib/aclocal:$deps/share/aclocal
-export CPPFLAGS="-I$deps/include --sysroot=$NDK/../sysroot"
+export CPPFLAGS="-I$deps/include --sysroot=$deps/.."
 export FREETYPE_CFLAGS="-I$deps/include/freetype2"
 export PULSE_CFLAGS="-I$deps/include/pulse"
 export PULSE_LIBS="-L$deps/lib/pulseaudio -lpulse"
@@ -80,6 +80,7 @@ export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llv
 export PKG_CONFIG_SYSROOT_DIR="$deps/.."
 export CFLAGS="--sysroot=$deps/.."
 export CXXFLAGS="--sysroot=$deps/.."
+
 ./configure \
 --prefix="$PWD/../Builds" \
 --with-opengl \
