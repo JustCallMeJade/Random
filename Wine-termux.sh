@@ -97,7 +97,7 @@ export LDFLAGS="-L$deps/lib"
 --without-coreaudio \
 --without-cups \
 --without-dbus \
---with-fontconfig \
+--without-fontconfig \
 --with-freetype \
 --without-opencl \
 --without-osmesa \
