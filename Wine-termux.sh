@@ -127,7 +127,7 @@ export CXXFLAGS="--sysroot=$deps/.. --target=aarch64-linux-android28"
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
 --host=aarch64-linux-android \
---build=x86_64-pc-linux-gnu \
+--build=x86_64-linux-gnu \
 --with-wine-tools=./wine-tools
 
 make -j$(nproc)
