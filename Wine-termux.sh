@@ -2,11 +2,12 @@
 set -e pipefail
 
 WORKDIR=$PWD/Workdir
-OUTPUTDIR=$WORKDIR/Builds
 
 mkdir -p $WORKDIR $OUTPUTDIR
 
 cd $WORKDIR
+
+mkdir Builds
 
 wget -O ndk.zip https://dl.google.com/android/repository/android-ndk-r29-linux.zip &> /dev/null
 unzip ndk.zip &> /dev/null
@@ -75,7 +76,7 @@ export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool
 
 ./configure \
---prefix="$OUTPUTDIR" \
+--prefix="$PWD/Workdir/Builds" \
 --with-opengl \
 --with-vulkan \
 --enable-nls \
