@@ -40,6 +40,10 @@ export CROSSCC="arm64ec-w64-mingw32-clang"
 export CROSSCXX="arm64ec-w64-mingw32-clang++"
 export CC=$NDK/aarch64-linux-android30-clang
 export CXX=$NDK/aarch64-linux-android30-clang++
+export AR="$NDK/llvm-ar"
+export RANLIB="$NDK/llvm-ranlib"
+export STRIP="$NDK/llvm-strip"
+export NM="$NDK/llvm-nm"
 
 chmod +x configure
 
