@@ -13,10 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable i386
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+
       - name: Install dependencies
         run: |
-          dpkg --add-architecture i386
-          export BASE_DEPS="\
+          sudo apt-get install -y \
             debootstrap \
             perl \
             git \
@@ -24,10 +28,18 @@ jobs:
             xz-utils \
             bubblewrap \
             autoconf \
+            automake \
             flex \
             bison \
+            pkg-config \
+            make \
+            gcc \
+            g++ \
             gcc-multilib \
             g++-multilib \
+            clang \
+            lld \
+            mingw-w64 \
             libx11-dev \
             libxext-dev \
             libxi-dev \
@@ -36,13 +48,13 @@ jobs:
             libxcomposite-dev \
             libxdamage-dev \
             libxfixes-dev \
-            libxxf86vm-dev \
             libxrender-dev \
             libxinerama-dev \
+            libxxf86vm-dev \
             libgl-dev \
-            libsdl2-dev \
-            libglu-dev \
+            libglu1-mesa-dev \
             libosmesa6-dev \
+            libsdl2-dev \
             libfreetype6-dev \
             libfontconfig1-dev \
             libpcap-dev \
@@ -61,20 +73,37 @@ jobs:
             libvulkan1 \
             mesa-vulkan-drivers \
             gettext \
-            libgettextpo-dev"
-
-          sudo apt-get update
-          sudo apt-get install -y $BASE_DEPS
-
-          sudo apt-get install -y \
+            libgettextpo-dev \
             libunwind-dev \
             libgstreamer1.0-dev \
             libgstreamer-plugins-base1.0-dev \
             libmpg123-dev \
             libopenal-dev \
-            wayland*
+            libwayland-dev \
+            libxkbcommon-dev \
+            libkrb5-dev
 
-          sudo apt-get install -y gstreamer1.0-* wayland-* krb5* *krb5 libkrb5-dev libfreetype6-dev:i386
+          sudo apt-get install -y \
+            libfreetype6-dev:i386 \
+            libfontconfig1-dev:i386 \
+            libx11-dev:i386 \
+            libxext-dev:i386 \
+            libxi-dev:i386 \
+            libxrandr-dev:i386 \
+            libxcursor-dev:i386 \
+            libxcomposite-dev:i386 \
+            libxdamage-dev:i386 \
+            libxfixes-dev:i386 \
+            libxrender-dev:i386 \
+            libxinerama-dev:i386 \
+            libxxf86vm-dev:i386 \
+            libgl-dev:i386 \
+            libsdl2-dev:i386 \
+            libpulse-dev:i386 \
+            libvulkan-dev:i386 \
+            libgstreamer1.0-dev:i386 \
+            libgstreamer-plugins-base1.0-dev:i386 \
+            libkrb5-dev:i386
 
       - name: Run build script
         run: |
