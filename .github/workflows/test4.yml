@@ -15,6 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          dpkg --add-architecture i386
           export BASE_DEPS="\
             debootstrap \
             perl \
@@ -73,7 +74,7 @@ jobs:
             libopenal-dev \
             wayland*
 
-          sudo apt-get install -y gstreamer1.0-* wayland-* krb5* *krb5 libkrb5-dev 
+          sudo apt-get install -y gstreamer1.0-* wayland-* krb5* *krb5 libkrb5-dev libfreetype6-dev:i386
 
       - name: Run build script
         run: |
