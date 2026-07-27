@@ -12,7 +12,7 @@ wget -O ndk.zip https://dl.google.com/android/repository/android-ndk-r29-linux.z
 unzip ndk.zip &> /dev/null
 wget -O mingw.tar.xz https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64.tar.xz &> /dev/null # The Standard MINGW package doesn't have arm64ec 
 tar -xf mingw.tar.xz &> /dev/null
-wget -O termuxfs.tar https://github.com/GameNative/termux-on-gha/releases/download/build-20260218/termuxfs-aarch64.tar
+wget -O termuxfs.tar https://github.com/GameNative/termux-on-gha/releases/download/build-20260218/termuxfs-aarch64.tar &> /dev/null
 tar -xf termuxfs.tar
 export PATH="$WORKDIR/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64/bin:$PATH"
 
