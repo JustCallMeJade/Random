@@ -36,7 +36,7 @@ git switch stable
 
 wget https://raw.githubusercontent.com/JustCallMeJade/Turnip_drivers_adreno/refs/heads/main/Extras/patch-fixer.py
 
-for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch; do
+for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch 9998-fix-winegcc-build-target.patch 9999-fix-winebuild-as-type.patch; do
 wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-stable/"$patches"
 python3 patch-fixer.py "$patches"
 done
