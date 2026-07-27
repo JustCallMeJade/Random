@@ -17,7 +17,7 @@ echo "Building android_sysvshm for aarch64..."
 $CC -Wall -std=gnu99 -shared -fPIC \
     -I"$SCRIPT_DIR" \
     -o "$deps/lib/libandroid-sysvshm.so" \
-    "$SCRIPT_DIR/android_sysvshm.c"
+    "$SCRIPT_DIR/android_sysvshem.c"
 
 if [ $? -eq 0 ]; then
     echo "Build successful! Output: $OUTPUT_DIR/libandroid-sysvshm.so"
