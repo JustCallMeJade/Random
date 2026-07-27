@@ -28,12 +28,11 @@ cd ../../../../../..
 
 export NDK=$WORKDIR/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin
 
-git clone --depth=1 --recursive https://github.com/ValveSoftware/wine
+git clone --recursive https://gitlab.winehq.org/wine/wine
 
 cd wine
 
-chmod +x autogen.sh
-./autogen.sh
+git switch stable
 
 wget https://raw.githubusercontent.com/JustCallMeJade/Turnip_drivers_adreno/refs/heads/main/Extras/patch-fixer.py
 
