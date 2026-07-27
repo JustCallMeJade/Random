@@ -98,7 +98,7 @@ export NM="$NDK/llvm-nm"
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
 --host=aarch64-linux-android \
---build=x86_64-linux-gnu \
+--build=x86_64-pc-linux-gnu \
 --with-wine-tools=./wine-tools
 
 make -j$(nproc)
