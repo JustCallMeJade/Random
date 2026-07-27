@@ -126,7 +126,7 @@ export LDFLAGS="-L$deps/lib"
 --with-sdl \
 --enable-wineandroid_drv=no \
 --disable-amd_args_x64 \
---host=aarch64-linux-android \
+--host=aarch64-linux-android28 \
 --with-wine-tools=./wine-tools
 
 make -j$(nproc)
