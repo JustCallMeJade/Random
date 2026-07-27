@@ -42,13 +42,13 @@ wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/
 python3 patch-fixer.py "$patches"
 done
 
-chmod +x configure.sh
+chmod +x configure
 
 mkdir wine-tools
 
 cd wine-tools
 
-../configure.sh --without-x --without-gstreamer --without-vulkan --without-wayland
+../configure --without-x --without-gstreamer --without-vulkan --without-wayland
 make -j$(nproc) __tooldeps__ nls/all
 
 cd ..
@@ -79,6 +79,7 @@ export FFMPEG_LIBS="-L$deps/lib -lavutil -lavcodec -lavformat"
 export DLLTOOL="$WORKDIR/llvm-mingw-w64-ucrt-2026016-ubuntu-22.04-x86_64/bin/llvm-dlltool"
 export PKG_CONFIG_SYSROOT_DIR="$deps/.."
 export CFLAGS="--sysroot=$deps/.."
+export CXXFLAGS="--sysroot=$deps/.."
 ./configure \
 --prefix="$PWD/../Builds" \
 --with-opengl \
