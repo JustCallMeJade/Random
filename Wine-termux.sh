@@ -50,7 +50,7 @@ for patch in $(find ../../patches/common -name "*.patch" | sort -V); do
     python3 patch-fixer.py "$patch"
 done
 
-for directories in ./dll/ntdll/unix/ ./server/; do
+for directories in ./dlls/ntdll/unix/ ./server/; do
 cp ../../shm_utils/shm_utils.h "$directories"
 done
 
