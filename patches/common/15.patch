@@ -7,7 +7,7 @@ index 3074f7c..275d099 100644
  #include "esync.h"
  #include "fsync.h"
 +#ifdef __ANDROID__
-+#include "../../shm_utils/shm_utils.h"
++#include "../../../shm_utils/shm_utils.h"
 +#endif
  
  WINE_DEFAULT_DEBUG_CHANNEL(esync);
