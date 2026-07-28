@@ -7,7 +7,7 @@ index 963ebd2..d03b34c 100644
  #include "wine/debug.h"
  
 +#ifdef __ANDROID__
-+#include "../../shm_utils/shm_utils.h"
++#include "../../../shm_utils/shm_utils.h"
 +#endif
 +
  WINE_DEFAULT_DEBUG_CHANNEL(virtual);
