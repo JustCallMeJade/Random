@@ -7,7 +7,7 @@ index 4d9f5cd..b3c738e 100644
  #include "unix_private.h"
  #include "fsync.h"
 +#ifdef __ANDROID__
-+#include "../../../shm_utils/shm_utils.h"
++#include "../../../../shm_utils/shm_utils.h"
 +#endif
  
  WINE_DEFAULT_DEBUG_CHANNEL(fsync);
