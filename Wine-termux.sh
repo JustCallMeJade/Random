@@ -42,6 +42,14 @@ wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/
 python3 patch-fixer.py "$patches"
 done
 
+for patch in $(find ../../patches/folder1 -name "*.patch" | sort -V); do
+    python3 patch-fixer.py "$patch"
+done
+
+for patch in $(find ../../patches/folder2 -name "*.patch" | sort -V); do
+    python3 patch-fixer.py "$patch"
+done
+
 chmod +x configure
 
 mkdir wine-tools
