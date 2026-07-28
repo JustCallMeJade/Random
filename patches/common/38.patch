@@ -7,7 +7,7 @@ index 8097b86..7da0aa5 100644
  #include "request.h"
  #include "fsync.h"
 +#ifdef __ANDROID__
-+#include "../../shm_utils/shm_utils.h"
++#include "../../../shm_utils/shm_utils.h"
 +#endif
  
  #include "pshpack4.h"
