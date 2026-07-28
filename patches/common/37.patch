@@ -7,7 +7,7 @@ index a516443..c40b4ad 100644
  #include "esync.h"
  #include "fsync.h"
 +#ifdef __ANDROID__
-+#include "../../shm_utils/shm_utils.h"
++#include "../../../shm_utils/shm_utils.h"
 +#endif
  
  int do_esync(void)
