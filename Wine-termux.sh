@@ -125,7 +125,7 @@ export LDFLAGS="-L$deps/lib"
 --enable-archs=arm64ec,aarch64,i386 \
 --with-xcursor \
 --with-xfixes \
---with-mingw=clang \
+--with-mingw \
 --without-xinerama \
 --with-xinput \
 --with-xinput2 \
