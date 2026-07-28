@@ -54,6 +54,10 @@ for directories in ./dlls/ntdll/unix/ ./server/; do
 cp ../../shm_utils/shm_utils.h "$directories"
 done
 
+find . -mindepth 1 -type d | while read -r dir; do
+    cp ../../android-sysvshem/sys/shm.h "$dir"
+done
+
 chmod +x configure
 
 mkdir wine-tools
