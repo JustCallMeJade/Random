@@ -35,20 +35,7 @@ cd wine
 chmod +x autogen.sh
 ./autogen.sh
 
-wget https://raw.githubusercontent.com/JustCallMeJade/Turnip_drivers_adreno/refs/heads/main/Extras/patch-fixer.py
-
-for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch 9998-fix-winegcc-build-target.patch 9999-fix-winebuild-as-type.patch; do
-wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-stable/"$patches"
-python3 patch-fixer.py "$patches"
-done
-
-for patch in $(find ../../patches/arm64ec -name "*.patch" | sort -V); do
-    python3 patch-fixer.py "$patch"
-done
-
-for patch in $(find ../../patches/common -name "*.patch" | sort -V); do
-    python3 patch-fixer.py "$patch"
-done
+wget https://raw.githubusercontent.com/JustCallMeJade/Turnip_drivers_adreno/refs/heads/main/Extras/patch-
 
 for directories in ./dlls/ntdll/unix/ ./server/; do
 cp ../../shm_utils/shm_utils.h "$directories"
@@ -145,6 +132,19 @@ export LDFLAGS="-L$deps/lib"
 --disable-amd_args_x64 \
 --host=aarch64-linux-android28 \
 --with-wine-tools=./wine-tools
+
+for patches in 0001-fix-paths.patch 0002-fix-defines.patch 0003-fix-socket-ipx.patch 0004-no-pthread_mutexattr_setprotocol.patch 0005-use-__builtin_ffs.patch 9998-fix-winegcc-build-target.patch 9999-fix-winebuild-as-type.patch; do
+wget https://raw.githubusercontent.com/JustCallMeJade/tur/refs/heads/master/tur/wine-stable/"$patches"
+python3 patch-fixer.py "$patches"
+done
+
+for patch in $(find ../../patches/arm64ec -name "*.patch" | sort -V); do
+    python3 patch-fixer.py "$patch"
+done
+
+for patch in $(find ../../patches/common -name "*.patch" | sort -V); do
+    python3 patch-fixer.py "$patch"
+done
 
 make -j$(nproc)
 make install
